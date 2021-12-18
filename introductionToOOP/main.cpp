@@ -60,7 +60,6 @@ public:
 		y_dist = this->y - new_point.y;
 		return sqrt(x_dist * x_dist + y_dist * y_dist);
 	}
-
 };
 // }A, B, C; - объявление объектов сразу
 
@@ -89,7 +88,6 @@ void main()
 
 	Point* pA = &A; // Создаём указатель на объект нашей структуры
 	cout << pA->x << tab << pA->y << endl;
-
 #endif // STRUCT_POINT
 	
 	//double x, y;
@@ -109,7 +107,6 @@ void main()
 	Point B(10, 20);
 	B.print();
 
-	cout << "distance 1: " << A.distance(B) << endl;
-	cout << "distance 2: " << distance(A, B) << endl;
-
+	cout << "distance from method: " << A.distance(B) << endl;
+	cout << "distance from function: " << distance(A, B) << endl;
 }
