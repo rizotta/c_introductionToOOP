@@ -22,14 +22,56 @@ public:
 	}
 	void set_x(double x)
 	{
-		this->x = x;
+		this->x = x; // Encapsulation DONE
 	}
 	void set_y(double y)
 	{
 		this->y = y;
 	}
+
+	//				Constructors:
+	//Point() // конструктор по умолчанию, т.к. без параметров
+	//{
+	//	x = y = 0; // инициализация значений по умолчанию, то, что нужно в конструкторе
+	//	cout << "DefaultConstructor:\t" << this << endl;
+	//}
+	Point(double x = 0, double y = 0) // конструктор по умолчанию, можно вызвать с параметрами
+	{
+		this->x = x;
+		this->y = y;
+		//cout << "Constructor:\t" << this << endl;
+	}
+	~Point() // деструктор, обычно пишется внизу, после конструкторов
+	{
+		//cout << "Destructor:\t" << this << endl;
+	}
+
+	//				Methods:
+	void print()const
+	{
+		cout << "X = " << x << "\tY = " << y << endl; // можно x и без this, т.к. нет других переменных x
+	}
+
+	double distance(Point new_point)const // возвращает расстояние до указанной точки
+	{
+		double x_dist;
+		double y_dist;
+		x_dist = this->x - new_point.x;
+		y_dist = this->y - new_point.y;
+		return sqrt(x_dist * x_dist + y_dist * y_dist);
+	}
+
 };
-// }A, B, C; - объявление объектов
+// }A, B, C; - объявление объектов сразу
+
+double distance(Point a, Point b)
+{
+	double x_dist;
+	double y_dist;
+	x_dist = a.get_x() - b.get_x();
+	y_dist = a.get_y() - b.get_y();
+	return sqrt(x_dist * x_dist + y_dist * y_dist);
+}
 
 void main()
 {
@@ -50,9 +92,24 @@ void main()
 
 #endif // STRUCT_POINT
 	
-	Point A;
-	A.set_x(2);
-	A.set_y(3);
-	cout << A.get_x() << tab << A.get_y() << endl;
+	//double x, y;
+	//cout << "Введите координаты точки: "; cin >> x >> y;
+	//A.set_x(2);
+	//A.set_y(4);
+	//cout << A.get_x() << tab << A.get_y() << endl;
+
+	//Point С = 5; // Single-argument constructor (C.x = 5)
+	//С.print();
+	//Point D(0, 123);
+	//С.print();
+
+	Point A(2, 3);
+	A.print();
 	
+	Point B(10, 20);
+	B.print();
+
+	cout << "distance 1: " << A.distance(B) << endl;
+	cout << "distance 2: " << distance(A, B) << endl;
+
 }
